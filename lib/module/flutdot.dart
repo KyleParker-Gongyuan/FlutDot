@@ -11,7 +11,8 @@ class FlutDot {
   late Function(dynamic jsonData) cb;
 
   ///Must be initialized in the void main(){}
-  FlutDot([int port = 1878]) {
+  ///sets the port for routing info to and from godot
+  FlutDot({int port = 1878}) {
     _localPort = port;
     if (!kIsWeb) {
       _localhostServer = InAppLocalhostServer(port: _localPort);
@@ -42,7 +43,7 @@ class FlutDot {
     }
   }
 
-  Widget GoDotContainer() {
+  Widget GoDotContainerWidget() {
     return InAppWebView(
       onConsoleMessage: (controller, consoleMessage) {
         if (cb != null) {
