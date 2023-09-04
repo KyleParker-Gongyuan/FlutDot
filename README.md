@@ -10,7 +10,7 @@ Bi-directional communication between GoDot and Flutter gives your GoDot game ful
 
 ## Getting Started
 
-1. Make a Godot Web export to the flutdot_flutter/GoDotExport/ folder.
+1. Export your Godot project as web into [yourProject]/GoDotExport/ folder. (you will have to make "GoDotExport")
 
 2. Build the flutter Project.
 
@@ -36,7 +36,10 @@ Bi-directional communication between GoDot and Flutter gives your GoDot game ful
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"> <!-- <= Important!-->
 ```
-
+### pubspec.yaml
+```yaml
+-GoDotExport/
+```
 
 ToDo | State GoDot | State Flutter 
 -------- | -------- | -------- 
