@@ -21,3 +21,10 @@ shape = SubResource( 1 )
 position = Vector2( -0.75, 0 )
 scale = Vector2( 1.93359, 1.9375 )
 texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 545.0
+margin_top = 86.0
+margin_right = 585.0
+margin_bottom = 100.0
+text = "yep"
