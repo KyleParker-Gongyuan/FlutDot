@@ -8,11 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "DateTime",
+"language": "GDScript",
+"path": "res://addons/datetime/datetime.gd"
+} ]
+_global_script_class_icons={
+"DateTime": ""
+}
+
 [application]
 
 config/name="Flutdot GoDot Demo"
 run/main_scene="res://DemoScene.tscn"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/flutterconnection/plugin.cfg" )
 
 [gui]
 
