@@ -149,4 +149,7 @@ class FlutDot {
     }
   }
   
+  void stopServer(){
+    _localhostServer.close();
+  }
 }
