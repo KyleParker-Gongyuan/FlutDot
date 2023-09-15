@@ -11,6 +11,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 class FlutDot {
   late int _localWebPort;
   late int _localWSPort;
+  late bool _reopenable;
   late InAppLocalhostServer _localhostServer;
   late InAppWebViewController _webcontroller;
 
@@ -28,11 +29,13 @@ class FlutDot {
 
 
   ///Must be initialized in the void main(){} //! does it actually or do we need to be
-  FlutDot({int portWeb = 1878, int portWS = 5000}) {
+  FlutDot({int portWeb = 1878, int portWS = 5000, bool reopenable = false}) {
     _localWebPort = portWeb;
     _localWSPort = portWS;
+    _reopenable = reopenable;
     if (!kIsWeb) {
-      _localhostServer = InAppLocalhostServer(port: _localWebPort);
+      // shared makes it so we can 'reconnect'
+      _localhostServer = InAppLocalhostServer(port: _localWebPort, shared: reopenable);
     }
     // start the localhost server
     _startServer();
@@ -65,7 +68,7 @@ class FlutDot {
       
       print("FlutDot: Init Server!");
       
-      HttpServer.bind('localhost', _localWSPort).then((HttpServer server) { //! 不懂
+      HttpServer.bind('localhost', _localWSPort, shared: _reopenable).then((HttpServer server) { //! 不懂
         print('FlutDot: [+]WebSocket listening at -- ws://localhost:$_localWSPort/');
         server.listen((HttpRequest request) {
           print("got request: $request");
@@ -148,7 +151,7 @@ class FlutDot {
       client.addUtf8Text(utf8.encode(message));
     }
   }
-  
+
   void stopServer(){
     _localhostServer.close();
   }
