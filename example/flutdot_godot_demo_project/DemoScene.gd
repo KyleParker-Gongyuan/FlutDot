@@ -82,7 +82,7 @@ func _process(_delta):
 
 func sendPos(pos): ## sends the player posintion to the server
 	
-	var message = "command:ping, val:name"
+	var message = '{"command":"ping", "val":"name"}'
 	var packet: PoolByteArray = JSON.print(message).to_utf8()
 	print("Sending packet ", packet.get_string_from_utf8())
 

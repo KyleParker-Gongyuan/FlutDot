@@ -123,6 +123,7 @@ class FlutDot {
     }
   }
 
+  /// webwiew works andorid and ios
   Widget GoDotContainer() {
     return InAppWebView(
       onWebViewCreated: (controller) {
